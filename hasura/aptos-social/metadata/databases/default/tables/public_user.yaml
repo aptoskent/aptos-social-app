@@ -1,0 +1,90 @@
+table:
+  name: user
+  schema: public
+object_relationships:
+  - name: profile_picture_image
+    using:
+      manual_configuration:
+        column_mapping:
+          profile_picture_img_id: id
+        insertion_order: null
+        remote_table:
+          name: image
+          schema: public
+array_relationships:
+  - name: user_group_edges
+    using:
+      manual_configuration:
+        column_mapping:
+          id: user_id
+        insertion_order: null
+        remote_table:
+          name: user_group_edge
+          schema: public
+  - name: user_post_edges
+    using:
+      manual_configuration:
+        column_mapping:
+          id: user_id
+        insertion_order: null
+        remote_table:
+          name: user_post_edge
+          schema: public
+insert_permissions:
+  - role: user
+    permission:
+      check:
+        auth_id:
+          _eq: X-Hasura-User-Id
+      set:
+        id: x-hasura-id
+      columns:
+        - auth_id
+        - birthday
+        - created_at
+        - email
+        - full_name
+        - id
+        - invite_code
+        - phone_number
+        - profile_picture_img_id
+        - pronoun
+        - updated_at
+        - username
+select_permissions:
+  - role: user
+    permission:
+      columns:
+        - auth_id
+        - birthday
+        - created_at
+        - email
+        - full_name
+        - id
+        - is_test_user
+        - phone_number
+        - profile_picture_img_id
+        - pronoun
+        - updated_at
+        - username
+      filter: {}
+update_permissions:
+  - role: user
+    permission:
+      columns:
+        - auth_id
+        - birthday
+        - created_at
+        - email
+        - full_name
+        - id
+        - invite_code
+        - phone_number
+        - profile_picture_img_id
+        - pronoun
+        - updated_at
+        - username
+      filter:
+        auth_id:
+          _eq: X-Hasura-User-Id
+      check: null

@@ -1,0 +1,125 @@
+table:
+  name: group
+  schema: public
+object_relationships:
+  - name: created_by_user
+    using:
+      manual_configuration:
+        column_mapping:
+          created_by_user_id: id
+        insertion_order: null
+        remote_table:
+          name: user
+          schema: public
+  - name: profile_image
+    using:
+      manual_configuration:
+        column_mapping:
+          profile_picture_serial_number: serial_number
+        insertion_order: null
+        remote_table:
+          name: mascot_image_used
+          schema: public
+  - name: test_group_profile_image
+    using:
+      manual_configuration:
+        column_mapping:
+          test_group_profile_picture_serial_number: serial_number
+        insertion_order: null
+        remote_table:
+          name: mascot_image_reusable
+          schema: public
+array_relationships:
+  - name: group_user_edges
+    using:
+      manual_configuration:
+        column_mapping:
+          id: group_id
+        insertion_order: null
+        remote_table:
+          name: user_group_edge
+          schema: public
+  - name: posts
+    using:
+      manual_configuration:
+        column_mapping:
+          id: group_id
+        insertion_order: null
+        remote_table:
+          name: post
+          schema: public
+insert_permissions:
+  - role: user
+    permission:
+      check: {}
+      columns:
+        - created_at
+        - created_by_user_id
+        - group_size
+        - id
+        - is_deleted
+        - is_private
+        - is_test_group
+        - name
+        - points
+        - profile_picture_img_id
+        - profile_picture_serial_number
+        - test_group_profile_picture_serial_number
+        - updated_at
+select_permissions:
+  - role: user
+    permission:
+      columns:
+        - created_at
+        - created_by_user_id
+        - group_size
+        - id
+        - is_deleted
+        - is_private
+        - is_test_group
+        - name
+        - points
+        - profile_picture_img_id
+        - profile_picture_serial_number
+        - test_group_profile_picture_serial_number
+        - updated_at
+      filter:
+        _or:
+          - is_private:
+              _eq: false
+          - group_user_edges:
+              _exists:
+                _table:
+                  name: user
+                  schema: public
+                _where:
+                  auth_id:
+                    _eq: X-Hasura-User-Id
+      allow_aggregations: true
+update_permissions:
+  - role: user
+    permission:
+      columns:
+        - is_deleted
+        - is_private
+        - is_test_group
+        - group_size
+        - points
+        - profile_picture_serial_number
+        - test_group_profile_picture_serial_number
+        - name
+        - created_at
+        - updated_at
+        - created_by_user_id
+        - id
+        - profile_picture_img_id
+      filter:
+        group_user_edges:
+          _exists:
+            _table:
+              name: user
+              schema: public
+            _where:
+              auth_id:
+                _eq: X-Hasura-User-Id
+      check: null

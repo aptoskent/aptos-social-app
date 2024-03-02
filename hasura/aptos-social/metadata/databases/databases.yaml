@@ -1,0 +1,16 @@
+- name: default
+  kind: postgres
+  configuration:
+    connection_info:
+      database_url:
+        from_env: PG_DATABASE_URL
+      isolation_level: read-committed
+      use_prepared_statements: false
+  logical_models:
+    - fields:
+        - name: group_id
+          type:
+            nullable: true
+            scalar: uuid
+      name: shared_groups_model
+  tables: "!include default/tables/tables.yaml"

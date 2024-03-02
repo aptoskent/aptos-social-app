@@ -1,0 +1,31 @@
+table:
+  name: reported_post
+  schema: public
+object_relationships:
+  - name: post
+    using:
+      manual_configuration:
+        column_mapping:
+          post_id: id
+        insertion_order: null
+        remote_table:
+          name: post
+          schema: public
+  - name: reported_by_user
+    using:
+      manual_configuration:
+        column_mapping:
+          reported_by_user_id: id
+        insertion_order: null
+        remote_table:
+          name: user
+          schema: public
+insert_permissions:
+  - role: user
+    permission:
+      check: {}
+      columns:
+        - created_at
+        - id
+        - post_id
+        - reported_by_user_id

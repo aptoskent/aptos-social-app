@@ -1,0 +1,37 @@
+table:
+  name: image
+  schema: public
+object_relationships:
+  - name: created_by_user
+    using:
+      manual_configuration:
+        column_mapping:
+          created_by_user_id: id
+        insertion_order: null
+        remote_table:
+          name: user
+          schema: public
+insert_permissions:
+  - role: user
+    permission:
+      check: {}
+      columns:
+        - id
+        - created_at
+        - img_url
+        - thumbnail_url
+        - original_img_url
+        - created_by_user_id
+        - metadata
+select_permissions:
+  - role: user
+    permission:
+      columns:
+        - metadata
+        - img_url
+        - original_img_url
+        - thumbnail_url
+        - created_at
+        - created_by_user_id
+        - id
+      filter: {}

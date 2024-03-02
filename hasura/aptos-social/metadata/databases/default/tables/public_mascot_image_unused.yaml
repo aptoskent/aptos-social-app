@@ -1,0 +1,28 @@
+table:
+  name: mascot_image_unused
+  schema: public
+insert_permissions:
+  - role: user
+    permission:
+      check: {}
+      columns:
+        - id
+        - serial_number
+        - background_colors
+        - img_url
+        - created_at
+select_permissions:
+  - role: user
+    permission:
+      columns:
+        - background_colors
+        - created_at
+        - id
+        - img_url
+        - serial_number
+      filter: {}
+      allow_aggregations: true
+delete_permissions:
+  - role: user
+    permission:
+      filter: {}

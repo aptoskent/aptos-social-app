@@ -1,0 +1,20 @@
+table:
+  name: group_join_request
+  schema: public
+insert_permissions:
+  - role: user
+    permission:
+      check:
+        _exists:
+          _table:
+            name: user
+            schema: public
+          _where:
+            auth_id:
+              _eq: X-Hasura-User-Id
+      columns:
+        - id
+        - created_at
+        - updated_at
+        - group_id
+        - user_id

@@ -1,0 +1,46 @@
+table:
+  name: comment
+  schema: public
+object_relationships:
+  - name: from_user
+    using:
+      manual_configuration:
+        column_mapping:
+          from_user_id: id
+        insertion_order: null
+        remote_table:
+          name: user
+          schema: public
+  - name: post
+    using:
+      manual_configuration:
+        column_mapping:
+          post_id: id
+        insertion_order: null
+        remote_table:
+          name: post
+          schema: public
+insert_permissions:
+  - role: user
+    permission:
+      check:
+        from_user:
+          auth_id:
+            _eq: X-Hasura-User-Id
+      columns:
+        - id
+        - content
+        - created_at
+        - post_id
+        - from_user_id
+select_permissions:
+  - role: user
+    permission:
+      columns:
+        - content
+        - created_at
+        - from_user_id
+        - id
+        - post_id
+      filter: {}
+      allow_aggregations: true

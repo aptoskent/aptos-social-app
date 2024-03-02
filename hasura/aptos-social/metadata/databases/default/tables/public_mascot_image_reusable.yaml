@@ -1,0 +1,14 @@
+table:
+  name: mascot_image_reusable
+  schema: public
+select_permissions:
+  - role: user
+    permission:
+      columns:
+        - id
+        - created_at
+        - serial_number
+        - img_url
+        - background_colors
+        - updated_at
+      filter: {}

@@ -1,0 +1,31 @@
+table:
+  name: user_feed
+  schema: public
+object_relationships:
+  - name: group
+    using:
+      manual_configuration:
+        column_mapping:
+          group_id: id
+        insertion_order: null
+        remote_table:
+          name: group
+          schema: public
+  - name: post
+    using:
+      manual_configuration:
+        column_mapping:
+          post_id: id
+        insertion_order: null
+        remote_table:
+          name: post
+          schema: public
+  - name: user
+    using:
+      manual_configuration:
+        column_mapping:
+          user_id: id
+        insertion_order: null
+        remote_table:
+          name: user
+          schema: public

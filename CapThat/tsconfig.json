@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "noImplicitAny": false,
+    "baseUrl": ".",
+    "paths": {
+      "CapThat/*": ["./*"]
+    }
+  },
+  "extends": "@tsconfig/react-native/tsconfig.json"
+}

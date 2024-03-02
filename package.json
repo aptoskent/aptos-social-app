@@ -1,0 +1,29 @@
+{
+  "name": "aptos-social-app",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "postinstall": "husky install",
+    "fmt": "prettier --config .prettierrc.json 'CapThat/**/*.{js,jsx,ts,tsx,json,css,scss,md}' -w",
+    "prepare": "husky install"
+  },
+  "lint-staged": {
+    "CapThat/**/*.{js,jsx,ts,tsx,json,css,scss,md}": [
+      "prettier --config .prettierrc.json -w"
+    ],
+    "*.{js,css,md}": "prettier --write"
+  },
+  "author": "",
+  "private": true,
+  "devDependencies": {
+    "husky": "^8.0.0",
+    "lint-staged": "^13.2.1",
+    "prettier": "^2.8.7"
+  },
+  "dependencies": {
+    "@types/react": "~18.0.0",
+    "@types/react-native": "~0.69.1",
+    "moment": "^2.29.4",
+    "typescript": "^4.6.3"
+  }
+}

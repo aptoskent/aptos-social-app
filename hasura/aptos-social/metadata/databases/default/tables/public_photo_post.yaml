@@ -1,0 +1,53 @@
+table:
+  name: photo_post
+  schema: public
+object_relationships:
+  - name: created_by_user
+    using:
+      manual_configuration:
+        column_mapping:
+          created_by_user_id: id
+        insertion_order: null
+        remote_table:
+          name: user
+          schema: public
+  - name: image
+    using:
+      manual_configuration:
+        column_mapping:
+          image_id: id
+        insertion_order: null
+        remote_table:
+          name: image
+          schema: public
+insert_permissions:
+  - role: user
+    permission:
+      check: {}
+      columns:
+        - id
+        - caption
+        - created_by_user_id
+        - image_id
+select_permissions:
+  - role: user
+    permission:
+      columns:
+        - caption
+        - created_by_user_id
+        - id
+        - image_id
+      filter: {}
+update_permissions:
+  - role: user
+    permission:
+      columns:
+        - id
+        - caption
+        - created_by_user_id
+        - image_id
+      filter:
+        created_by_user:
+          auth_id:
+            _eq: X-Hasura-User-Id
+      check: {}

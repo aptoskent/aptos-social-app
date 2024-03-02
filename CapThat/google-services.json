@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1080359895152",
+    "firebase_url": "https://aptos-capthat-default-rtdb.firebaseio.com",
+    "project_id": "aptos-capthat",
+    "storage_bucket": "aptos-capthat.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1080359895152:android:be97fdc69df354760db4b5",
+        "android_client_info": {
+          "package_name": "com.aptos.capthat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1080359895152-j9a7dir39vm9pnddr1njo338oj9nvrge.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDAEBCjujoT4pFECLe6rHQ3LGkIE7rX-oM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1080359895152-0qs6ql617lgb1aavv2a03057chph270q.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1080359895152-ptdtn0ipitum94fj503h803lbqtc93vh.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.aptos.capthat"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
